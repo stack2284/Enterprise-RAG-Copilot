@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# downloaded or generated: rebuild with scripts/download_data.py, copilot.ingest and copilot.structured
+data/
+logs/

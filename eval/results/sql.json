@@ -1,0 +1,234 @@
+{
+  "n_questions": 25,
+  "execution_accuracy": 0.84,
+  "first_attempt_accuracy": 0.76,
+  "recovered_by_retry": 2,
+  "valid_sql_rate": 1.0,
+  "rows": [
+    {
+      "id": "sql-000",
+      "question": "What was Walmart's total revenue in fiscal 2026?",
+      "correct": true,
+      "attempts": 2,
+      "sql": "SELECT SUM(revenue) AS total_revenue FROM financials WHERE ticker='WMT' AND fiscal_year=2026",
+      "error": null,
+      "seconds": 6.032065125000372
+    },
+    {
+      "id": "sql-001",
+      "question": "What was Costco's net income in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, net_income FROM financials WHERE ticker='COST' AND fiscal_year=2025",
+      "error": null,
+      "seconds": 1.6930556660008733
+    },
+    {
+      "id": "sql-002",
+      "question": "Which of the six retailers had the highest net income in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, net_income FROM financials WHERE fiscal_year=2025 ORDER BY net_income DESC LIMIT 1",
+      "error": null,
+      "seconds": 1.731837874998746
+    },
+    {
+      "id": "sql-003",
+      "question": "What was Target's diluted EPS in fiscal 2024 and fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, eps_diluted FROM financials WHERE ticker='TGT' AND (fiscal_year=2024 OR fiscal_year=2025)",
+      "error": null,
+      "seconds": 1.9283274170011282
+    },
+    {
+      "id": "sql-004",
+      "question": "What was Home Depot's gross margin (gross profit divided by revenue) in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, (gross_profit / revenue) AS gross_margin FROM financials WHERE ticker='HD' AND fiscal_year=2025",
+      "error": null,
+      "seconds": 1.8007202079970739
+    },
+    {
+      "id": "sql-005",
+      "question": "By what percentage did Lowe's revenue change from fiscal 2024 to fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT (t2.revenue - t1.revenue) / t1.revenue * 100 AS revenue_growth_percentage FROM financials t1 JOIN financials t2 ON t1.ticker = t2.ticker AND t1.fiscal_year = 2024 AND t2.fiscal_year = 2025 WHERE t1.ticker = 'LOW' AND t2.ticker = 'LOW'",
+      "error": null,
+      "seconds": 2.813640624997788
+    },
+    {
+      "id": "sql-006",
+      "question": "Rank the six retailers by fiscal 2025 revenue from largest to smallest.",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, revenue FROM financials WHERE fiscal_year=2025 ORDER BY revenue DESC",
+      "error": null,
+      "seconds": 1.586250000000291
+    },
+    {
+      "id": "sql-007",
+      "question": "Which retailer had the highest operating margin in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, (operating_income / revenue) AS operating_margin FROM financials WHERE fiscal_year=2025 ORDER BY operating_margin DESC LIMIT 1",
+      "error": null,
+      "seconds": 1.916661541996291
+    },
+    {
+      "id": "sql-008",
+      "question": "How much did Best Buy spend on capital expenditures in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, capex FROM financials WHERE ticker='BBY' AND fiscal_year=2025",
+      "error": null,
+      "seconds": 1.7347696670040023
+    },
+    {
+      "id": "sql-009",
+      "question": "What was Walmart's inventory at the end of fiscal 2026?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, inventory FROM financials WHERE ticker='WMT' AND fiscal_year=2026",
+      "error": null,
+      "seconds": 1.675054999999702
+    },
+    {
+      "id": "sql-010",
+      "question": "How much did Home Depot pay in dividends in fiscal 2025?",
+      "correct": true,
+      "attempts": 2,
+      "sql": "SELECT fiscal_year, SUM(dividends_paid) AS total_dividends FROM financials WHERE ticker='HD' AND fiscal_year=2025 GROUP BY fiscal_year",
+      "error": null,
+      "seconds": 3.7780180829940946
+    },
+    {
+      "id": "sql-011",
+      "question": "What was Target's operating cash flow minus capital expenditures (free cash flow) in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, operating_cash_flow - capex AS free_cash_flow FROM financials WHERE ticker='TGT' AND fiscal_year=2025",
+      "error": null,
+      "seconds": 1.8329511250049109
+    },
+    {
+      "id": "sql-012",
+      "question": "Which company had the lowest net margin in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, net_income / revenue AS net_margin FROM financials WHERE fiscal_year=2025 ORDER BY net_margin ASC LIMIT 1",
+      "error": null,
+      "seconds": 1.8148474999979953
+    },
+    {
+      "id": "sql-013",
+      "question": "What was Costco's revenue growth from fiscal 2025 to fiscal 2026?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT (t2.revenue / t1.revenue - 1) * 100 AS revenue_growth FROM financials t1 JOIN financials t2 ON t1.ticker = t2.ticker AND t1.fiscal_year = 2025 AND t2.fiscal_year = 2026 WHERE t1.ticker = 'COST'",
+      "error": null,
+      "seconds": 2.610805958000128
+    },
+    {
+      "id": "sql-014",
+      "question": "How much did Lowe's spend on share repurchases in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT ticker, fiscal_year, share_repurchases FROM financials WHERE ticker='LOW' AND fiscal_year=2025",
+      "error": null,
+      "seconds": 1.696058624998841
+    },
+    {
+      "id": "sql-015",
+      "question": "What was the combined revenue of Home Depot and Lowe's in fiscal 2025?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT SUM(revenue) AS combined_revenue FROM financials WHERE (ticker='HD' OR ticker='LOW') AND fiscal_year=2025",
+      "error": null,
+      "seconds": 1.8099336250015767
+    },
+    {
+      "id": "sql-016",
+      "question": "In how many fiscal years since 2020 did Best Buy's revenue decline versus the prior year?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT COUNT(DISTINCT fy) FROM (SELECT ticker, fiscal_year AS fy, revenue, LAG(revenue) OVER (PARTITION BY ticker ORDER BY fiscal_year) AS prev_year_revenue FROM financials WHERE ticker = 'BBY' AND fiscal_year >= 2020) AS yearly_revenue WHERE revenue < prev_year_revenue",
+      "error": null,
+      "seconds": 2.515399209005409
+    },
+    {
+      "id": "sql-017",
+      "question": "In the online retail data, which country had the highest total sales excluding the United Kingdom and cancellations?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT country, SUM(line_revenue) AS total_sales FROM online_retail WHERE country != 'United Kingdom' AND NOT is_cancellation GROUP BY country ORDER BY total_sales DESC LIMIT 1",
+      "error": null,
+      "seconds": 1.925091249999241
+    },
+    {
+      "id": "sql-018",
+      "question": "In the online retail data, what was total sales in November 2010, excluding cancellations?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT sum(line_revenue) AS total_sales FROM online_retail WHERE NOT is_cancellation AND year(invoice_date)=2010 AND month(invoice_date)=11",
+      "error": null,
+      "seconds": 1.893692290999752
+    },
+    {
+      "id": "sql-019",
+      "question": "In the online retail data, how many distinct customers placed orders in 2011?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT count(DISTINCT customer_id) AS distinct_customers FROM online_retail WHERE year(invoice_date)=2011 AND NOT is_cancellation",
+      "error": null,
+      "seconds": 1.8125999999974738
+    },
+    {
+      "id": "sql-020",
+      "question": "In the online retail data, which product description sold the most units overall (excluding cancellations)?",
+      "correct": true,
+      "attempts": 1,
+      "sql": "SELECT description, SUM(quantity) AS total_units_sold FROM online_retail WHERE NOT is_cancellation GROUP BY description ORDER BY total_units_sold DESC LIMIT 1",
+      "error": null,
+      "seconds": 1.80230224999832
+    },
+    {
+      "id": "sql-021",
+      "question": "In the online retail data, how many invoices were cancellations?",
+      "correct": false,
+      "attempts": 1,
+      "sql": "SELECT count(*) AS cancellation_invoices FROM online_retail WHERE is_cancellation",
+      "error": null,
+      "seconds": 1.516231333000178
+    },
+    {
+      "id": "sql-022",
+      "question": "In the online retail data, which month had the highest sales, excluding cancellations?",
+      "correct": false,
+      "attempts": 1,
+      "sql": "SELECT strftime('%m', invoice_date) AS month, SUM(unit_price * quantity) AS total_sales FROM online_retail WHERE NOT is_cancellation GROUP BY month ORDER BY total_sales DESC LIMIT 1",
+      "error": null,
+      "seconds": 1.9627612499971292
+    },
+    {
+      "id": "sql-023",
+      "question": "In the online retail data, what was the average order value in 2011 (sales divided by distinct invoices, excluding cancellations)?",
+      "correct": false,
+      "attempts": 1,
+      "sql": "SELECT avg(line_revenue) AS average_order_value FROM online_retail WHERE year(invoice_date)=2011 AND NOT is_cancellation",
+      "error": null,
+      "seconds": 1.7736252920003608
+    },
+    {
+      "id": "sql-024",
+      "question": "In the online retail data, how many countries had at least 1000 invoice lines?",
+      "correct": false,
+      "attempts": 1,
+      "sql": "SELECT count(DISTINCT country) AS countries_with_1000_invoices FROM online_retail WHERE quantity >= 1000",
+      "error": null,
+      "seconds": 1.7624626249962603
+    }
+  ]
+}
