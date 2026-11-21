@@ -7,6 +7,12 @@ transactions). A LangGraph agent decides per question whether to search document
 It cites every claim, checks that its numbers come from the sources, and refuses when the data doesn't
 cover the question. Everything runs locally on an Apple-silicon Mac; no API keys are needed.
 
+![Streamlit chat UI answering a hybrid question](docs/streamlit_ui.png)
+
+*A hybrid question in the Streamlit UI: the revenue figure comes from the warehouse, the explanation
+from Target's 10-K. The answer shows the route, latency and token count, and the generated SQL is
+expanded below it.*
+
 ```
 question ─► rewrite (chat memory → standalone question)
          ─► route (LLM: doc | sql | hybrid | none)
